@@ -12,7 +12,7 @@ Storefront takes code ideas and structure from the following projects.
 There are many e-commerce frameworks created already but as with all duplicate projects,
 I wasn't satisfied with any of them. This is
 
-Currently, nothing in the project works properly yet, other than the models to set up categories and items. The eventual goal with this project is not to create a framework or API, but a fully functional app that can be easily skinned.
+Currently, few things in the project work properly yet, save for the models to set up categories and items and the admin site. The eventual goal with this project is not to create a framework or API, but a fully functional app that can be easily skinned.
 
 TODO:
 - create working URLs for the product models.
