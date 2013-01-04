@@ -17,3 +17,9 @@ Currently, nothing in the project works properly yet, other than the models to s
 TODO:
 - create working URLs for the product models.
 - If I infrige on anyone's work, let me know and I'll make the corrections.
+
+Required Dependencies so far
+----------------------------
+* django-mptt
+* django-tagging
+
