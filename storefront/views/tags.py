@@ -26,7 +26,7 @@ class TagList(ListView):
         with a count of their entries published.
         """
         return Tag.objects.usage_for_queryset(
-            Entry.published.all(), counts=True)
+            Item.published.all(), counts=True)
 
 
 class BaseTagDetail(object):

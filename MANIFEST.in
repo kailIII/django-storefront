@@ -1,0 +1,6 @@
+include README.md
+include LICENSE.txt
+include versions.cfg
+recursive-include docs *
+recursive-include storefront/static *
+recursive-include storefront/templates *.txt *.html *.xml *.js

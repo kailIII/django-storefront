@@ -19,6 +19,7 @@ class CategoryList(ListView):
     """
     View returning a list of all the categories.
     """
+    model = Category
     queryset = Category.objects.all()
 
 
