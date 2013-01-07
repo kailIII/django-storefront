@@ -54,19 +54,3 @@ class ItemPublishedManager(models.Manager):
 
         return self.get_query_set().filter(lookup)
 
-
-class ItemsRelatedPublishedManager(models.Manager):
-    """Manager to retrieve objects associated with published entries"""
-
-    def get_query_set(self):
-        """Return a queryset containing published entries"""
-        now = timezone.now()
-        return super(
-            ItemsRelatedPublishedManager, self).get_query_set().filter(
-            models.Q(items__start_sale__lte=now) | \
-            models.Q(items__start_sale=None),
-            models.Q(items__end_sale__gt=now) | \
-            models.Q(items__end_sale=None),
-            items__status=SALE,
-            items__sites=Site.objects.get_current()
-            ).distinct()

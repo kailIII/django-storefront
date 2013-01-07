@@ -92,8 +92,9 @@ class ItemAbstractClass(models.Model):
         
     @models.permalink
     def get_absolute_url(self):
-        """ Return the items's URL, which is basically just the item's slug """
-        return ('storefront_item_detail', (), {'slug': self.slug})    
+        """Return entry's URL"""
+        return ('storefront_item_detail', (), {
+            'slug': self.slug})
 
     class Meta:
         """ Item's Meta """

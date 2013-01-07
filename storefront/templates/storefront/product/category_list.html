@@ -1,0 +1,13 @@
+<html>
+<body>
+category list
+ 
+{% for cat in object_list %}
+<p>{{ cat }}</p>
+{% endfor %}
+ 
+<p>Category count: {{ object_list.count }}
+<p>Should be a be a dump: {{ object_list }}</p>
+ 
+</body>
+</html>

@@ -7,7 +7,6 @@ from mptt.models import TreeForeignKey
 from mptt.managers import TreeManager
 
 from storefront.managers import items_published
-from storefront.managers import ItemsRelatedPublishedManager
 
 class Category(MPTTModel):
     """Category model for Item"""
@@ -21,8 +20,9 @@ class Category(MPTTModel):
     is_active = models.BooleanField(_("Active"), default=True, blank=True)
     related = models.ManyToManyField('self', verbose_name=_('related categories'), blank=True, null=True)
     image = models.ImageField("Category Image", upload_to="images/", blank=True, null=True)
+
     objects = TreeManager()
-    published = ItemsRelatedPublishedManager()
+
     
     def __unicode__(self):
         return self.name
