@@ -9,16 +9,7 @@ Storefront takes code ideas and structure from the following projects.
 * Satchless
 * a few others.
 
-There are many e-commerce frameworks created already but as with all duplicate projects,
-I wasn't satisfied with any of them. This is
-
-Currently, few things in the project work properly yet, save for the models to set up categories and items and the admin site. The eventual goal with this project is not to create a framework or API, but a fully functional app that can be easily skinned.
-
-TODO:
-- create working URLs for the product models.
-- If I infrige on anyone's work, let me know and I'll make the corrections.
-
-Required Dependencies so far
+Required Dependencies at the moment
 ----------------------------
 * django-mptt
 * django-tagging
