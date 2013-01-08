@@ -1,12 +1,11 @@
-"""ProducstsAdmin for storefront"""
+"""ItemAdmin for storefront"""
 from django.contrib import admin
 from storefront.models.product.items import Item
 from storefront.models.product.items import ItemImage
-from storefront.models.product.categories import Category
 
 class ItemImage_Inline(admin.StackedInline):
     model = ItemImage
-    extra = 3
+    extra = 1
 
 class ItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {

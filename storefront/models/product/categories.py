@@ -27,9 +27,9 @@ class Category(MPTTModel):
     def __unicode__(self):
         return self.name
 
-    def entries_published(self):
+    def items_published(self):
         """Return only the entries published"""
-        return items_published(self.entries)
+        return items_published(self.items)
 
     @property
     def tree_path(self):

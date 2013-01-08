@@ -28,8 +28,8 @@ def tags_published():
 def items_published(queryset):
     """ Return only the active products with positive stock """
     return queryset.filter( 
-        models.Q( items_in_stock > 0 ),
-        models.Q(is_active=True),
+        #models.Q( items_in_stock > 0 ),
+        models.Q( is_active=True ),
     )
 
 class ItemPublishedManager(models.Manager):
