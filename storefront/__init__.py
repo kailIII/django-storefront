@@ -1,5 +1,5 @@
 """storefront"""
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 __license__ = 'BSD License'
 __author__ = 'Joost Vandorp'
 __email__ = 'joostvandorp@gmail.com'

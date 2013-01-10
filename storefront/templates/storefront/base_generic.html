@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]><html class="no-js ie ie6"> <![endif]-->
+<!--[if IE 7 ]><html class="no-js ie ie7"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js"> <!--<![endif]-->
+<head>
+	<title>{{ company_name }} | {% block title%}{% endblock title %}</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="{{ STATIC_URL }}storefront/css/style.css"> 
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="{{ STATIC_URL }}storefront/js/mediaqueries.js"></script>
+	<![endif]-->
+	<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+</head>
+
+<body>
+	<div id="wrap">
+	
+		<header id="header">
+			<div id="header-inner" class="container">
+				<div class="pad">
+					<p>
+						<a href="/">LOGO</a>
+						<a href="{% url storefront_home %}"> STOREFRONT </a>
+						<a href="{% url storefront_about %}"> ABOUT </a>
+						<a href="{% url storefront_blog  %}"> BLOG </a>
+						<a href="{% url storefront_contact %}"> CONTACT </a>
+						<a href="#SEARCH">SEARCH</a>
+					</p>
+				</div>
+			</div>
+		</header><!--/header-->
+				
+		<div id="page">
+			<div id="page-inner" class="container">
+				<div id="store-banner">
+					<p>{{ company_name }}</p>
+				</div>
+				<div class="main">
+					<section class="content">
+						<div class="pad text">
+							{% block content %}
+							{% endblock content %}
+						</div><!-- /pad text -->
+					</section><!--/content-->
+				</div><!--/main-->
+			</div><!--/container-->
+		</div><!--/page-->
+		
+		<footer id="footer">
+			<div id="footer-inner" class="container">
+				<div class="pad">
+					<p>Footer</p>
+					<p>legal stuff - legal stuff - sitemap -site map - legal stuff</p>
+				</div><!--/pad-->
+			</div><!--/container-->
+		</footer><!--/footer-->
+		
+	</div><!--/wrap-->
+</body>
+</html>

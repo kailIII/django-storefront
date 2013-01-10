@@ -27,7 +27,6 @@ from storefront.managers import SALE, REGULAR
 
 from storefront.settings import ITEM_BASE_MODEL
  
-# Product Model, using the default Django Model
 class ItemAbstractClass(models.Model):
     """ Base Model design for all items """
     

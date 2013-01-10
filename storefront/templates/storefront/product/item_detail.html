@@ -1,6 +1,8 @@
-<html>
-<p>category_details</p>
+{% extends "storefront/base_generic.html" %}
+
+{% block content %}
 
 <p>Should be a be a dump: {{ object }}</p>
 <p>Category Description: {{ object.description }}</p>
-</html>
+
+{% endblock content %}

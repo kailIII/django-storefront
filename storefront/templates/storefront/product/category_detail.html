@@ -1,10 +1,11 @@
-<html>
-<p>category_details</p>
+{% extends "storefront/base_generic.html" %}
 
+{% block content %}
+
+<p>category_details</p>
 <p>Should be a be a dump: {{ object }}</p>
 <p>Category Description: {{ object.description }}</p>
+<p>{{object.items_published}}</p>
 
-<p>
-	{{object.items_published}}
-</p>
-</html>
+{% endblock content %}	
+
