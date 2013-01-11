@@ -3,7 +3,8 @@ from setuptools import setup, find_packages
 
 import storefront
 
-setup(name='storefront',
+setup(
+    name='storefront',
     version=storefront.__version__,
     description='A clear and powerfull e-commerce app powered with Django',
     long_description='A clear and powerfull e-commerce app powered with Django',

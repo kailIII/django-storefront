@@ -8,6 +8,8 @@ Manager methods is the preferred way to add "table-level" functionality to your 
 (For "row-level" functionality 
 -- i.e., functions that act on a single instance of a model object 
 -- use Model methods, not custom Manager methods.)
+
+CURRENTLY NOT USED!
 """
 
 from django.db import models
@@ -20,7 +22,7 @@ SALE= 1
 def tags_published():
     """Return the published tags"""
     from tagging.models import Tag
-    from storefront.models.item import Item
+    from storefront.models.product.items import Item
     tags_entry_published = Tag.objects.usage_for_queryset(Item.published.all())
     # Need to do that until the issue #44 of django-tagging is fixed
     return Tag.objects.filter(name__in=[t.name for t in tags_entry_published])
@@ -39,6 +41,12 @@ class ItemPublishedManager(models.Manager):
         """Return published entries"""
         return items_published(
             super(ItemPublishedManager, self).get_query_set())
+            
+    def get_images(self):
+        """Return related images"""
+        from storefront.models.product.items import ItemImage
+        return ItemImage.objects.filter(pk=ItemImage_id)
+
 
     def basic_search(self, pattern):
         """Basic search on entries"""

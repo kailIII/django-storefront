@@ -13,7 +13,7 @@ class Banner(models.Model):
     
     def __unicode__(self):
         if self.caption:
-            return u"Image with caption \"%s\"" % self.caption
+            return u"%s" % self.caption
         else:
             return u"%s" % self.picture
 

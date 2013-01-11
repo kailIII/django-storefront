@@ -12,3 +12,6 @@ COMPANY_INFO = getattr(settings, 'STOREFRONT_COMPANY_INFO', {
 			'FAX':'default fax',
 			'EMAIL':'default email',}
 )
+
+#For banner Add
+BANNER_DISPLAY_TIMEOUT = getattr(settings, 'STOREFRONT_BANNER_DISPLAY_TIMEOUT', 2000)

@@ -9,7 +9,7 @@ from storefront.models.product.items import Item
 from storefront.mixins import CompanyInfoMixin
 
 
-class CategoryList( ListView, CompanyInfoMixin ): #used to be list view
+class CategoryList( ListView, CompanyInfoMixin ):
 
     model = Category
     queryset = Category.objects.all()
