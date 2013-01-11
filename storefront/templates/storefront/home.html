@@ -14,8 +14,9 @@
 </div>
 
 <div class="grid three-fifth">
-	<h3>Company Banner(s)</h3>
-	<p>There can be one or, there can be many, set to active, and set to random, and set time to display.</p>
+    {% for banner in banner_list %}	
+	    <img src="{{ banner.picture.url }}" title="{{ banner }}" alt="broken" />
+	{% endfor %}
 </div>
 
 <div class="grid one-fifth last">
@@ -35,6 +36,9 @@
                 {{ featured.name }}
             </a>
         </h3>
+        {% for image in featured.picture %}
+            <img src="{{ image.url }}" title="{{ featured.name }}" alt="broken" />
+        {% endfor %}
         <p>
         {{ featured.description }}
         </p>

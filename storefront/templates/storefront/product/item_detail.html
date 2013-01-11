@@ -1,11 +1,25 @@
 {% extends "storefront/base_generic.html" %}
 
+{% load comments %}
+
 {% block content %}
 
 <p>Should be a be a dump: {{ object }}</p>
 <p>Category Description: {{ object.description }}</p>
-<img src={{ object.picture }} alt=broken" />
+<img src={{ object.picture.url }} alt=broken" />
 
-{{ object.picture }}
+{% for image in object.picture %}
+            <img src="{{ image.url }}" title="{{ featured.name }}" alt="broken" />
+{% endfor %}
+
+
+
+object.picture.url: {{ object.picture.url }}<br />
+object.short_description: {{ object.short_description }}<br />
+object.ItemImage: {{ object.ItemImage }}<br />
+object.comments: {{ object.comments }}<br />
+object.status: {{ object.status }}<br />
+object.comment_enabled: {{ object.comment_enabled }}<br />
+object: {{ object }}<br />
 
 {% endblock content %}

@@ -119,9 +119,9 @@ class ItemImage(models.Model):
     
     def __unicode__(self):
         if self.item:
-            return u"Image of Item %s" % self.item.slug
+            return u"%s" % self.item.slug
         elif self.caption:
-            return u"Image with caption \"%s\"" % self.caption
+            return u"%s" % self.caption
         else:
             return u"%s" % self.picture
 

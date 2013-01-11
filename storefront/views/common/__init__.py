@@ -1,5 +1,7 @@
 from storefront.models.product.categories import Category
 from storefront.models.product.items import Item
+from storefront.models.frontend.banners import Banner
+
 from django.views.generic.base import TemplateView
 from storefront.mixins import CompanyInfoMixin  
 
@@ -11,6 +13,7 @@ class HomePage(TemplateView, CompanyInfoMixin):
         context = super(HomePage, self).get_context_data(**kwargs)
         context['feature_list'] = Item.objects.filter(featured=True)
         context['category_list'] = Category.objects.all()
+        context['banner_list'] = Banner.objects.all()
         return context
 
 
