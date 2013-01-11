@@ -1,5 +1,50 @@
 {% extends "storefront/base_generic.html" %}
 
+{% block javascripts %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+
+  (function () {
+    var slides = $('.slide');
+    var num_slides = slides.length;
+    var current_slide = 0;
+    var next_slide;
+
+    var fade_speed = 1000;
+    var interval_length = 6000;
+
+    for (var i = 0; i < num_slides; i++) {
+      $(slides[i]).hide();
+    }
+
+    $(slides[current_slide]).fadeIn(fade_speed);
+
+    setInterval(function () {
+      next_slide = (current_slide + 1) % num_slides;
+      $(slides[current_slide]).fadeOut(fade_speed);
+      $(slides[next_slide]).fadeIn(fade_speed);
+      current_slide = next_slide;
+    }, interval_length);
+
+  })();
+});
+</script>
+{% endblock javascripts %}
+
+{% block extra-style %}
+<style>
+.slide {
+  position:absolute;
+}
+.banner{
+   height:250px;
+   overflow:hidden;
+}
+</style>
+{% endblock extra-style %}
+
 {% block content %}						
 <div class="grid one-fifth">
 	<h3>Categories</h3>
@@ -13,16 +58,17 @@
 	</p>
 </div>
 
-<div class="grid three-fifth">
+<div class="grid three-fifth banner">
+    <p><!--leave me blank--></p>
     {% for banner in banner_list %}	
-	    <img src="{{ banner.picture.url }}" title="{{ banner }}" alt="broken" />
+	    <img class="slide" src="{{ banner.picture.url }}" title="{{ banner }}" alt="broken" />
 	{% endfor %}
 </div>
 
 <div class="grid one-fifth last">
 	<h3>Why we Are the Best</h3>
 	<p>
-		asdfasdfasd<br>
+		This and the title will become changeable in the admin as well.<br>
 	</p>
 </div><div class="clear"></div>
 						
@@ -36,8 +82,13 @@
                 {{ featured.name }}
             </a>
         </h3>
+        
+        {% for image in featured.itemimage_set.all %}
+            <img src="{{ image.picture.url }}" title="{{ image }}" alt="broken" /><br />
+        {% endfor %}
+        
         <p>
-        {{ featured.description }}
+        {{ featured.short_description }}
         </p>
     </div>
 {% endfor %}				
@@ -46,15 +97,9 @@
 
 <hr />
 
-<div class="grid last">
+<div class="this-is-not-a-class">
 	<h3>Locations</h3>
 	<p>
-		Links to distributers brick and mortar.
-		Links to distributers brick and mortar.
-		Links to distributers brick and mortar.
-		Links to distributers brick and mortar.
-		Links to distributers brick and mortar.
-		Links to distributers brick and mortar.
 		Links to distributers brick and mortar.
 		Links to distributers brick and mortar.
 		<br>

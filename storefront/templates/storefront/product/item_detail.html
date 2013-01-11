@@ -7,7 +7,7 @@
 <p>{{ object.description }}</p>
 
 {% for image in object.itemimage_set.all %}
-            <img src="{{ image.picture.url }}" title="{{ image.picture }}" alt="broken" /><br />
+    <img src="{{ image.picture.url }}" title="{{ image.picture }}" alt="broken" /><br />
 {% endfor %}
 
 object.comments: {{ object.comments }}<br />

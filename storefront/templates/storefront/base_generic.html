@@ -11,7 +11,14 @@
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<script src="{{ STATIC_URL }}storefront/js/mediaqueries.js"></script>
 	<![endif]-->
-	<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+	<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");
+	</script>
+	
+{% block javascripts %}
+{% endblock javascripts %}	
+
+{% block extra-style %}
+{% endblock extra-style %}
 </head>
 
 <body>
