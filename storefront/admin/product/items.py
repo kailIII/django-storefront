@@ -14,7 +14,7 @@ class ItemAdmin(admin.ModelAdmin):
     }
     
     fieldsets = (
-        (None, {'fields': ('site', 'categories', 'name', 'slug', 'sku', 'description', 'short_description', 'is_active', 'featured', 'items_in_stock','ordering', )}),
+        (None, {'fields': ('categories', 'name', 'slug', 'sku', 'description', 'short_description', 'is_active', 'featured', 'items_in_stock','ordering', )}),
         #(_('Meta Data'), {'fields': ('meta',), 'classes': ('collapse',)}),
         #(_('Item Dimensions'), {'fields': (('length', 'length_units','width','width_units','height','height_units'),('weight','weight_units')), 'classes': ('collapse',)}),
         #(_('Tax'), {'fields':('taxable', 'taxClass'), 'classes': ('collapse',)}),

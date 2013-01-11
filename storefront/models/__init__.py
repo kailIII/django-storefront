@@ -7,6 +7,7 @@ from storefront.models.product.items import Item
 from storefront.models.product.categories import Category
 from storefront.models.store.shop import Config
 from storefront.models.l10n.country import Country
+from storefront.models.frontend.banners import Banner
 
 
 __all__ = [

@@ -6,3 +6,9 @@ PAGINATION = getattr(settings, 'STOREFRONT_PAGINATION', 10)
 ITEM_TEMPLATES = getattr(settings, 'STOREFRONT_ITEM_TEMPLATES', [])
 ITEM_BASE_MODEL = getattr(settings, 'STOREFRONT_ITEM_BASE_MODEL', '')
 DEFAULT_CURRENCY = getattr(settings, 'STOREFRONT_DEFAULT_CURRENCY', '')
+COMPANY_INFO = getattr(settings, 'STOREFRONT_COMPANY_INFO', {
+			'NAME':'default name',
+			'PHONE':'default phone',
+			'FAX':'default fax',
+			'EMAIL':'default email',}
+)

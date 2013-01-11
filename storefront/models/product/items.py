@@ -1,10 +1,9 @@
-"""Item model for storefront"""
 import warnings
 
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
-from django.contrib.sites.models import Site
+#from django.contrib.sites.models import Site
 from django.contrib import comments
 
 from django.utils.importlib import import_module
@@ -49,7 +48,7 @@ class ItemAbstractClass(models.Model):
     creation_date = models.DateTimeField(_('creation date'), default=timezone.now)
     start_sale = models.DateTimeField(_('start sale'), blank=True, null=True, help_text=_('date start sale'))
     end_sale = models.DateTimeField(_('end sale'), blank=True, null=True, help_text=_('date end sale'))
-    site = models.ForeignKey(Site, verbose_name=_('Site'))
+    #site = models.ForeignKey(Site, verbose_name=_('Site'))
     
     objects = models.Manager()
     published = ItemPublishedManager()
@@ -99,10 +98,10 @@ class ItemAbstractClass(models.Model):
         """ Item's Meta """
         abstract = True
         app_label = 'storefront'
-        ordering = ('site', 'ordering', 'name')
+        ordering = ('ordering', 'name')
         verbose_name = _("Item")
         verbose_name_plural = _("Items")
-        unique_together = (('site', 'sku'),('site','slug'))
+        #unique_together = (('site', 'sku'),('site','slug'))
 
 class Item(ItemAbstractClass):
     """

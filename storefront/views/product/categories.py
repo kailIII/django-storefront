@@ -1,4 +1,3 @@
-"""Views for storefront categories"""
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
@@ -7,12 +6,11 @@ from django.shortcuts import get_object_or_404
 from storefront.models.product.categories import Category
 from storefront.models.product.items import Item
 
+from storefront.mixins import CompanyInfoMixin
 
-class CategoryList( ListView ):
-    """
-    View returning a list of all the categories, and
-    their respective sub-categories
-    """
+
+class CategoryList( ListView, CompanyInfoMixin ): #used to be list view
+
     model = Category
     queryset = Category.objects.all()
     context_object_name='complete_category_list',
@@ -23,13 +21,7 @@ class CategoryList( ListView ):
         return context
 
 
-class CategoryDetail( DetailView ):
-    """
-    This view will give the category name and description and list off:
-    - The name of each subcategory.
-    - The name of each item in this category.
-    - A description of that item.
-    """
+class CategoryDetail( DetailView, CompanyInfoMixin ):
 
     model = Category
     slug_field = 'slug'

@@ -13,7 +13,12 @@ from storefront.admin.l10n.country import CountryAdmin
 from storefront.models.store.shop import Config
 from storefront.admin.store.shop import ConfigAdmin
 
+from storefront.models.frontend.banners import Banner
+from storefront.admin.frontend.banners import BannerAdmin
+
+
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Country, CountryAdmin)
 admin.site.register(Config, ConfigAdmin)
+admin.site.register(Banner, BannerAdmin)

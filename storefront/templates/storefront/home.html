@@ -1,0 +1,65 @@
+{% extends "storefront/base_generic.html" %}
+
+{% block content %}						
+<div class="grid one-fifth">
+	<h3>Categories</h3>
+	<p>
+		{% for category in category_list %}
+		<a href="{{ category.get_absolute_url }}" title="{{ category.name }}" target="_self">
+			{{ category.name }}
+		</a><br />
+		{% endfor %}
+		
+	</p>
+</div>
+
+<div class="grid three-fifth">
+	<h3>Company Banner(s)</h3>
+	<p>There can be one or, there can be many, set to active, and set to random, and set time to display.</p>
+</div>
+
+<div class="grid one-fifth last">
+	<h3>Why we Are the Best</h3>
+	<p>
+		asdfasdfasd<br>
+	</p>
+</div><div class="clear"></div>
+						
+<hr />
+
+
+{% for featured in feature_list %}
+    <div class="grid one-fourth {% if forloop.last %}last{% endif %}">
+        <h3>
+            <a href="{{ featured.get_absolute_url }}" title="{{ featured.name }}" target="_self">
+                {{ featured.name }}
+            </a>
+        </h3>
+        <p>
+        {{ featured.description }}
+        </p>
+    </div>
+{% endfor %}				
+
+<div class="clear"></div>
+
+<hr />
+
+<div class="grid last">
+	<h3>Locations</h3>
+	<p>
+		Links to distributers brick and mortar.
+		Links to distributers brick and mortar.
+		Links to distributers brick and mortar.
+		Links to distributers brick and mortar.
+		Links to distributers brick and mortar.
+		Links to distributers brick and mortar.
+		Links to distributers brick and mortar.
+		Links to distributers brick and mortar.
+		<br>
+	</p>
+</div><div class="clear"></div>
+
+<div class="hr"></div>
+							
+{% endblock content%}

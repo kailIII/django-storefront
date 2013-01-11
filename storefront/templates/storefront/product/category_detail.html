@@ -2,10 +2,14 @@
 
 {% block content %}
 
-<p>category_details</p>
-<p>Should be a be a dump: {{ object }}</p>
+<p>Category Name: {{ object.name }}</p>
 <p>Category Description: {{ object.description }}</p>
-<p>{{object.items_published}}</p>
+
+{% for item in object.items_published %}
+    <a href="{{ item.get_absolute_url }}" title="{{ item.name }}" target="_self">
+        {{ item.name }}
+    </a><br>
+{% endfor %}
 
 {% endblock content %}	
 

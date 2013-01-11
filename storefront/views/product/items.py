@@ -1,10 +1,10 @@
-""" Views for storefront entries """
 from django.views.generic.detail import DetailView
 from django.shortcuts import get_object_or_404
 from storefront.models.product.items import Item
 
+from storefront.mixins import CompanyInfoMixin
 
-class ItemDetail(DetailView):
+class ItemDetail(DetailView, CompanyInfoMixin):
 	
     model = Item
     slug_field = 'slug'

@@ -6,7 +6,10 @@
 <p>{{ cat }}</p>
 {% endfor %}
  
-<p>Category count: {{ object_list.count }}</p>
-<p>Should be a be a dump: {{ object_list }}</p>
+{% for category in object_list %}
+		<a href="{{ category.get_absolute_url }}" title="{{ category.name }}" target="_self">
+			{{ category.name }}
+		</a><br>
+{% endfor %}
  
 {% endblock content %}
