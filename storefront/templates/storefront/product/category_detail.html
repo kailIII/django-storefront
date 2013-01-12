@@ -2,14 +2,29 @@
 
 {% block content %}
 
-<p>Category Name: {{ object.name }}</p>
-<p>Category Description: {{ object.description }}</p>
+    <div class="grid last">
+        <h3> {{ object.name }}</h3>
+        <p>{{ object.description }}</p>
+    </div>
+    
+    <div class="clear"></div>
+    <div class="hr"></div>
 
-{% for item in object.items_published %}
-    <a href="{{ item.get_absolute_url }}" title="{{ item.name }}" target="_self">
-        {{ item.name }}
-    </a><br>
-{% endfor %}
+    {% for item in object.items_published %}
+        <div class="grid one-fifth {% cycle 'foo' 'foo' 'bar' 'bar' 'last' %}">
+            <h3><a href="{{ item.get_absolute_url }}" title="{{ item.name }}" target="_self">
+                {{ item.name }}
+            </a></h3>
+            
+            <p>
+            {% for image in item.itemimage_set.all %}
+                <img src="{{ image.picture.url }}" title="{{ image.picture }}" alt="broken" />
+            {% endfor %}
+            </p>
+        </div>
+    {% endfor %}
 
-{% endblock content %}	
+    <div class="clear"></div>
+    <div class="hr"></div>
 
+{% endblock content %}

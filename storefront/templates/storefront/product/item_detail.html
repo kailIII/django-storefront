@@ -1,21 +1,23 @@
 {% extends "storefront/base_generic.html" %}
 {% load comments %}
 
-{% block content %}
+{% block content %}						
+<div class="grid one-half">
+    <h3>{{object.name}}</h3>
+    <p>{{ object.description }}</p>
+    <p>
+        {% for image in object.itemimage_set.all %}
+            <img src="{{ image.picture.url }}" title="{{ image.picture }}" alt="broken" />
+        {% endfor %}
+    </p>
+</div>
 
-<h3>{{object.name}}</h3>
-<p>{{ object.description }}</p>
+<div class="grid one-half last">
+    {% render_comment_form for object %}
+    {% render_comment_list for object %}
+</div>
 
-{% for image in object.itemimage_set.all %}
-    <img src="{{ image.picture.url }}" title="{{ image.picture }}" alt="broken" /><br />
-{% endfor %}
-
-object.comments: {{ object.comments }}<br />
-object.status: {{ object.status }}<br />
-object.comment_enabled: {{ object.comment_enabled }}<br />
-object: {{ object }}<br />
-
-{% endblock content %}
-
-
-
+<div class="clear"></div>
+<div class="hr"></div>
+							
+{% endblock content%}

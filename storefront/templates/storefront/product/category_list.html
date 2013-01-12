@@ -1,15 +1,17 @@
 {% extends "storefront/base_generic.html" %}
 
 {% block content %}
+    {% for category in object_list %}
+        <div class="grid one-half {% cycle ' ' 'last' %}">
+    		<h3><a href="{{ category.get_absolute_url }}" title="{{ category.name }}" target="_self">
+    			{{ category.name }}
+    		</h3></a>
+    		<p>{{ category.description }}</p>
+    		<img src="{{ category.image.url }}" title="{{ category }}" alt="broken" />
+        </div>
+    {% endfor %}
 
-{% for cat in object_list %}
-<p>{{ cat }}</p>
-{% endfor %}
- 
-{% for category in object_list %}
-		<a href="{{ category.get_absolute_url }}" title="{{ category.name }}" target="_self">
-			{{ category.name }}
-		</a><br>
-{% endfor %}
+    <div class="clear"></div>
+    <div class="hr"></div>
  
 {% endblock content %}

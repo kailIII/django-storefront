@@ -7,7 +7,7 @@ Storefront takes code ideas and structure from the following projects.
 * Satchmo
 
 I do not intend this to be a framework that can be heavily customized, but rather a complete solution.
-The one thing I will leave as to be added in is payment methods. Unitl I feel comfortable with taking online payment, this functionality will appear as order forms/requests, without actual payment processing.
+The one thing I will leave as to be added in is payment methods. Unitl I feel comfortable with taking online payment, this functionality will appear as order forms/requests, without actual payment processing. 
 
 Required Dependencies at the moment
 ----------------------------
