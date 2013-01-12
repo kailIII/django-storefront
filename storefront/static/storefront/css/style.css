@@ -26,7 +26,7 @@ img { max-width: 100%; height: auto; }
 a { color: #43a4d8; }
 .left { float: left; }
 .right { float: right; }
-.hr { background: url(img/hr.png) repeat-x top left; border: 0; height: 1px; margin: 30px 0; }
+.hr { background: url(../img/hr.png) repeat-x top left; border: 0; height: 1px; margin: 30px 0; }
 
 /*  base : clear/clearfix
 /* ------------------------------------ */
@@ -75,10 +75,10 @@ h1, h2, h3, h4, h5, h6 { color: #444; font-weight: 600; }
 /*  main
 /* ------------------------------------ */
 .main { background-color: #fff; }
-.main.sidebar-right { background-image: url(img/sidebar-right-340.png); background-repeat: repeat-y; background-position: right 0; padding-right: 340px; }
+.main.sidebar-right { background-image: url(../img/sidebar-right-340.png); background-repeat: repeat-y; background-position: right 0; padding-right: 340px; }
 .main.sidebar-right .sidebar { float: right; margin-right: -340px; }
 .main.sidebar-right .content-part { float: left; }
-.main.sidebar-left { background-image: url(img/sidebar-left-340.png); background-repeat: repeat-y; background-position: left 0; padding-left: 340px; }
+.main.sidebar-left { background-image: url(../img/sidebar-left-340.png); background-repeat: repeat-y; background-position: left 0; padding-left: 340px; }
 .main.sidebar-left .sidebar { float: left; margin-left: -340px; }
 .main.sidebar-left .content-part { float: right; }
 
@@ -130,9 +130,9 @@ h1, h2, h3, h4, h5, h6 { color: #444; font-weight: 600; }
  *  Tablet (Common) : 860px > 640px Width
 /* ------------------------------------------------------------------------- */
 @media only screen and (min-width: 640px) and (max-width: 860px) {
-	.main.sidebar-right { background-image: url(img/sidebar-right-260.png); padding-right: 260px; }
+	.main.sidebar-right { background-image: url(../img/sidebar-right-260.png); padding-right: 260px; }
 	.main.sidebar-right .sidebar { float: right; margin-right: -260px; }
-	.main.sidebar-left { background-image: url(img/sidebar-left-260.png); padding-left: 260px; }
+	.main.sidebar-left { background-image: url(../img/sidebar-left-260.png); padding-left: 260px; }
 	.main.sidebar-left .sidebar { float: left; margin-left: -260px; }
 	.sidebar { width: 260px; }
 }
