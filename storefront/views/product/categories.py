@@ -6,10 +6,9 @@ from django.shortcuts import get_object_or_404
 from storefront.models.product.categories import Category
 from storefront.models.product.items import Item
 
-from storefront.mixins import CompanyInfoMixin
+from storefront.settings import COMPANY_INFO
 
-
-class CategoryList( ListView, CompanyInfoMixin ):
+class CategoryList( ListView ):
 
     model = Category
     queryset = Category.objects.all()
@@ -21,7 +20,7 @@ class CategoryList( ListView, CompanyInfoMixin ):
         return context
 
 
-class CategoryDetail( DetailView, CompanyInfoMixin ):
+class CategoryDetail( DetailView ):
 
     model = Category
     slug_field = 'slug'

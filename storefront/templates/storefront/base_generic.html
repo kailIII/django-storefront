@@ -4,7 +4,7 @@
 <!--[if IE 8 ]><html class="no-js ie ie8"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html class="no-js"> <!--<![endif]-->
 <head>
-	<title>{{ company_name }} | {% block title%}{% endblock title %}</title>
+	<title>{{ COMPANY_NAME }} | {% block title%}{% endblock title %}</title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="{{ STATIC_URL }}storefront/css/style.css"> 
 	<!--[if lt IE 9]>
@@ -46,7 +46,7 @@
 		<div id="page">
 			<div id="page-inner" class="container">
 				<div id="store-banner">
-					<p>{{ company_name }}</p>
+					<p>{{ COMPANY_NAME }}</p>
 				</div>
 				<div class="main">
 					<section class="content">

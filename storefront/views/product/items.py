@@ -3,9 +3,7 @@ from django.shortcuts import get_object_or_404
 from storefront.models.product.items import Item
 from storefront.models.product.items import ItemImage
 
-from storefront.mixins import CompanyInfoMixin
-
-class ItemDetail(DetailView, CompanyInfoMixin):
+class ItemDetail(DetailView):
 	
     model = Item
     slug_field = 'slug'

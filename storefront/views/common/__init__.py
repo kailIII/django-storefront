@@ -3,9 +3,9 @@ from storefront.models.product.items import Item
 from storefront.models.frontend.banners import Banner
 
 from django.views.generic.base import TemplateView
-from storefront.mixins import CompanyInfoMixin  
+from django.views.generic.detail import DetailView
 
-class HomePage(TemplateView, CompanyInfoMixin):
+class HomePage( TemplateView ):
     
     template_name="storefront/home.html"
 	
@@ -17,15 +17,17 @@ class HomePage(TemplateView, CompanyInfoMixin):
         return context
 
 
-class AboutPage(TemplateView, CompanyInfoMixin):
+class AboutPage( TemplateView ):
     
     template_name="storefront/about.html"
+    
+    #queryset = ''
 	
     def get_context_data(self, **kwargs):
         context = super(AboutPage, self).get_context_data(**kwargs)
         return context
         
-class ContactPage(TemplateView, CompanyInfoMixin):
+class ContactPage( TemplateView ):
     
     template_name="storefront/contact.html"
 	
