@@ -52,8 +52,8 @@ li{display:inline-block; margin:2px; padding:5px; background:white;}
     </ul>
     <hr />
     <div id="item_feedback">
-        {% render_comment_form for object %}
         {% render_comment_list for object %}
+        {% render_comment_form for object %}
     </div>
     
     <div id="item_details">
