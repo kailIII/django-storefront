@@ -1,20 +1,72 @@
 {% extends "storefront/base_generic.html" %}
 {% load comments %}
 
+{% block meta %}{{object.meta_description}}{% endblock meta%}
+
+{% block javascripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script>
+$(document).ready(function() {
+   $('#detail_button').click(function(){
+     //alert("clicked detail_button");
+     $('#item_feedback').hide();
+     $('#item_details').show();
+   });
+  
+   $('#feedback_button').click(function(){
+     //alert("clicked feedback_button");
+     $('#item_feedback').show();
+     $('#item_details').hide();
+
+   });
+   
+ });
+</script>
+{% endblock javascripts %}
+
+{% block extra-style %}
+<style>
+li{display:inline-block; margin:2px; padding:5px; background:white;}
+
+#item_feedback{display:none;}
+</style>
+{% endblock extra-style %}
+
 {% block content %}						
 <div class="grid one-half">
     <h3>{{object.name}}</h3>
-    <p>{{ object.description }}</p>
+    <p>{{ object.short_description }}</p>
     <p>
         {% for image in object.itemimage_set.all %}
             <img src="{{ image.picture.url }}" title="{{ image.picture }}" alt="broken" />
         {% endfor %}
     </p>
+    <p> Related Items Here...</p>
 </div>
 
 <div class="grid one-half last">
-    {% render_comment_form for object %}
-    {% render_comment_list for object %}
+    <ul>
+        <li id="detail_button" >Details</li>
+        <li id="feedback_button" >Feedback</li>
+    </ul>
+    <hr />
+    <div id="item_feedback">
+        {% render_comment_form for object %}
+        {% render_comment_list for object %}
+    </div>
+    
+    <div id="item_details">
+        <p>Name: {{object.name}}</p>
+        <p>Description: {{object.description}}</p>
+        <p>Amount in Stock: {{object.items_in_stock}}</p>
+        <p>Price: Currently no price in set</p>
+        {%for category in object.categories.all %}
+            <a href="{{category.get_absolute_url}}">{{category}}</a>
+        {% endfor %}
+            
+    </div>
+
 </div>
 
 <div class="clear"></div>
