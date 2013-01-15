@@ -1,19 +1,45 @@
 {% extends "storefront/base_generic.html" %}
 
 {% block content %}
+<div class="grid two-fifth last">
+    
+    <p>Thanks for you interest in {{COMPANY_NAME}}</p>
+    <p>If you require immediate assistance, our phone number is {{COMPANY_PHONE}}.</p>
+    <p>You can also contact us via <a href="mailto:{{COMPANY_EMAIL}}">email</a> or by using the contact form provided.</p>
+    
+    
+    
+</div>
 
-<form action="{{storefront_contact}}" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
+<div class="grid three-fifth last">
+    <form action="{{storefront_contact}}" method="post">{% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            {{ form.subject.errors }}
+            <label for="id_subject">Email subject:</label>
+            {{ form.subject }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.message.errors }}
+            <label for="id_message">Your message:</label>
+            {{ form.message }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.sender.errors }}
+            <label for="id_sender">Your email address:</label>
+            {{ form.sender }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.cc_myself.errors }}
+            <label for="id_cc_myself">CC yourself?</label>
+            {{ form.cc_myself }}
+        </div>
+        <p><input type="submit" value="Send message" /></p>
+    </form>
+</div>
 
+<div class="clear"></div>
+						
+<hr />
 
 {% endblock content %}
-
-<!--
-You will need a Thank You page, or not even navigate away, and thank
-once submitted.
-
-Checkout Django.core.mailz
--->
-
