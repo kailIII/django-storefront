@@ -2,11 +2,14 @@ from storefront.models.product.categories import Category
 from storefront.models.product.items import Item
 from storefront.models.frontend.banners import Banner
 
-from django.views.generic.base import TemplateView
+from storefront.forms import ContactForm
 
-#for contact form only
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView
+
+from storefront.settings import COMPANY_INFO
+
+from django.core.mail import send_mail
 
 class HomePage( TemplateView ):
     
@@ -23,39 +26,29 @@ class HomePage( TemplateView ):
 class AboutPage( TemplateView ):
     
     template_name="storefront/about.html"
-    
-    #queryset = ''
 	
     def get_context_data(self, **kwargs):
         context = super(AboutPage, self).get_context_data(**kwargs)
         return context
         
-class ContactPage( TemplateView ):
+class ContactPage( FormView ):
     
     template_name="storefront/contact.html"
-    
-    def contact(request):
-        if request.method == 'POST': # If the form has been submitted...
-            form = ContactForm(request.POST)
-            if form.is_valid():
-                subject = form.cleaned_data['subject']
-                message = form.cleaned_data['message']
-                sender = form.cleaned_data['sender']
-                cc_myself = form.cleaned_data['cc_myself']
-                
-                recipients =['COMPANY_EMAIL'] #GET THIS FROM SETTINGS!!!
-                if cc_myself:
-                    recipients.append(sender)
-                    
-                from django.core.mail import send_mail
-                send_mail(subject, message, sender, recipients)
-                return HttpResponseRedirect('/thanks/')
-        else:
-            form = ContactForm()
-        return render(request, 'storefront/contact.html', {
-                'form': form,
-        })
+    form_class = ContactForm
+    success_url = '/thanks/'
+
+    def form_valid(self, form):
+        subject = form.cleaned_data['subject']
+        message = form.cleaned_data['message']
+        sender = form.cleaned_data['sender']
+        cc_myself = form.cleaned_data['cc_myself']
+        recipients = [COMPANY_INFO['email']]
+        if cc_myself:
+            recipients.append(sender)
+
+        send_mail(subject, message, sender, recipients)
+        return super(ContactPage, self).form_valid()
+
             
-    def get_context_data(self, **kwargs):
-        context = super(ContactPage, self).get_context_data(**kwargs)
-        return context
+
+    
