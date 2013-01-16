@@ -14,18 +14,22 @@
             <div class="grid one-third {% cycle '' '' 'last' %} ">
         {% endif %}
         
-            <h5 class="one-full">
-                <a href="{{ node.get_absolute_url }}" title="Show all entries in {{ node }}"> {{node}} </a>
-            </h5>
-            
-            {% if not node.is_root_node %}        
+            {% if node.is_root_node %}
+                <h3 class="one-full">
+                    <a href="{{ node.get_absolute_url }}" title="Show all entries in {{ node }}"> {{node}} </a>
+                </h3>
+            {% else %}
+                <h5 class="one-full">
+                    <a href="{{ node.get_absolute_url }}" title="Show all entries in {{ node }}"> {{node}} </a>
+                </h5>   
+           
                 {% thumbnail node.image "x75" format="PNG" as im %}
                     <img class="grid one-fourth" src="{{ im.url }}" title="{{ node }}" alt="broken" />
                 {% endthumbnail %}
-            {% endif %}
-                    
-            {% if node.description %}
-                <span class="grid three-fourth last">{{ node.description|striptags|safe }}</span>
+         
+                {% if node.description %}
+                    <span class="grid three-fourth last">{{ node.description|striptags|safe }}</span>
+                {% endif %}
             {% endif %}
             
             <!--Recursion here -->        

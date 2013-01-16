@@ -5,31 +5,81 @@
 
 {% block title %}{{ object.name }}{% endblock %}
 
+{% block javascripts %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>
+$(document).ready(function () {
+    
+{% for item in object.items_published %}    
+
+  (function () {
+    var slides = $('.slide{{item.ordering}}');
+    var num_slides = slides.length;
+    var current_slide = 0;
+    var next_slide;
+
+    var fade_speed = 1000;
+    var interval_length = 5000;
+
+    for (var i = 0; i < num_slides; i++) {
+      $(slides[i]).hide();
+    }
+
+    $(slides[current_slide]).fadeIn(fade_speed);
+
+    setInterval(function () {
+      next_slide = (current_slide + 1) % num_slides;
+      $(slides[current_slide]).fadeOut(fade_speed);
+      $(slides[next_slide]).fadeIn(fade_speed);
+      current_slide = next_slide;
+    }, interval_length);
+
+  })();
+{% endfor %}  
+});
+</script>
+{% endblock javascripts %}
+
+{% block extra-style %}
+<style>
+.slide {
+  position:absolute;
+}
+.picture_container{
+   height:100px;
+   overflow:hidden;
+}
+</style>
+{% endblock extra-style %}
+
 {% block content %}
 
-    <div class="grid one-third">
+    <div class="grid one-full last">
+        <p>Return to: <a href="{% url storefront_category_list %}">Category List</a></p>
+        <p>Subcategories go here:</p>
+        {%for child in object.get_children %}
+            <a href="{{ child.get_absolute_url }}" title="{{ child.name }}" target="_self">{{ child.name }}</a>
+        {% endfor %}
+    </div>
+    
+    <div class="clear"></div>
+    <hr />
+
+    <div class="grid one-half">
         <h3> {{ object.name }}</h3>
         <p>{{ object.description }}</p>
     </div>
     
-    <div class="grid one-third">
+    <div class="grid one-half last">
         {% thumbnail object.image "150x150" format="PNG" as im %}
             <img src="{{ im.url }}" title="{{ node.name }}" alt="broken" />
         {% endthumbnail %}
     </div>
-    
-    <div class="grid one-third last">
-        <p>Return to: <a href="{% url storefront_category_list %}">Category List</a></p>
-        
-        {%for child in object.get_children %}
-            <a href="{{ child.get_absolute_url }}" title="{{ child.name }}" target="_self">{{ child.name }}</a>
-        {% endfor %}
 
-    </div>
- 
     
     <div class="clear"></div>
-    <div class="hr"></div>
+    <hr />
 
     {% for item in object.items_published %}
         <div class="grid one-fifth {% cycle 'foo' 'foo' 'bar' 'bar' 'last' %}">
@@ -37,15 +87,17 @@
                 {{ item.name }}
             </a></h3>
             
-            <p>
+            <div class="picture_container">
             {% for image in item.itemimage_set.all %}
-                <img src="{{ image.picture.url }}" title="{{ image.picture }}" alt="broken" />
+                {% thumbnail image.picture "x100" format="PNG" as im %}
+                    <img class="slide{{item.ordering}}" src="{{ im.url }}" height="{{ im.y }}" title="{{ image.picture }}" alt="broken" />
+                {% endthumbnail %}
             {% endfor %}
-            </p>
+            </div>
         </div>
     {% endfor %}
 
     <div class="clear"></div>
-    <div class="hr"></div>
+    <hr />
 
 {% endblock content %}
