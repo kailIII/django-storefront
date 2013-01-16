@@ -1,11 +1,32 @@
 {% extends "storefront/base_generic.html" %}
 
+{% load mptt_tags %}
+{% load thumbnail %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
 {% block content %}
 
-    <div class="grid last">
+    <div class="grid one-third">
         <h3> {{ object.name }}</h3>
         <p>{{ object.description }}</p>
     </div>
+    
+    <div class="grid one-third">
+        {% thumbnail object.image "150x150" format="PNG" as im %}
+            <img src="{{ im.url }}" title="{{ node.name }}" alt="broken" />
+        {% endthumbnail %}
+    </div>
+    
+    <div class="grid one-third last">
+        <p>Return to: <a href="{% url storefront_category_list %}">Category List</a></p>
+        
+        {%for child in object.get_children %}
+            <a href="{{ child.get_absolute_url }}" title="{{ child.name }}" target="_self">{{ child.name }}</a>
+        {% endfor %}
+
+    </div>
+ 
     
     <div class="clear"></div>
     <div class="hr"></div>

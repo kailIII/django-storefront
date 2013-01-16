@@ -1,16 +1,52 @@
 {% extends "storefront/base_generic.html" %}
 
-{% block content %}
-    {% for category in object_list %}
-        <div class="grid one-half {% cycle ' ' 'last' %}">
-    		<h3><a href="{{ category.get_absolute_url }}" title="{{ category.name }}" target="_self">
-    			{{ category.name }}
-    		</h3></a>
-    		<p>{{ category.description }}</p>
-    		<img src="{{ category.image.url }}" title="{{ category }}" alt="broken" />
-        </div>
-    {% endfor %}
+{% load mptt_tags %}
+{% load thumbnail %}
 
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+    
+    {% recursetree object_list %}
+        {% if node.is_root_node %}
+            <div class="grid one-full last">
+        {% else %}
+            <div class="grid one-third {% cycle '' '' 'last' %} ">
+        {% endif %}
+        
+            <h5 class="one-full">
+                <a href="{{ node.get_absolute_url }}" title="Show all entries in {{ node }}"> {{node}} </a>
+            </h5>
+            
+            {% if not node.is_root_node %}        
+                {% thumbnail node.image "x75" format="PNG" as im %}
+                    <img class="grid one-fourth" src="{{ im.url }}" title="{{ node }}" alt="broken" />
+                {% endthumbnail %}
+            {% endif %}
+                    
+            {% if node.description %}
+                <span class="grid three-fourth last">{{ node.description|striptags|safe }}</span>
+            {% endif %}
+            
+            <!--Recursion here -->        
+            {% if not node.is_leaf_node %} {{ children }} {% endif %}
+                
+        {% if node.is_root_node %}
+            </div>
+            <div class="clear"></div>
+            <div class="hr"></div>
+        {% else %}
+            </div>
+        {% endif %}
+    {% endrecursetree %}
+    
+    {% if not object_list %}
+        <div class="grid last">
+            <li>No categories yet.</li>
+            </div>
+    {% endif %}
+
+    
     <div class="clear"></div>
     <div class="hr"></div>
  

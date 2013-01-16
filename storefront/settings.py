@@ -15,3 +15,8 @@ COMPANY_INFO = getattr(settings, 'STOREFRONT_COMPANY_INFO', {
 
 #For banner Add
 BANNER_DISPLAY_TIMEOUT = getattr(settings, 'STOREFRONT_BANNER_DISPLAY_TIMEOUT', 2000)
+
+FLATPAGE_TEMPLATE_CHOICES = (
+	('choice1','choice_1_string'),
+	('choice2','choice_2_string')
+)

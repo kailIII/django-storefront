@@ -1,5 +1,7 @@
 {% extends "storefront/base_generic.html" %}
 {% load comments %}
+{% load mptt_tags %}
+{% load thumbnail %}
 
 {% block meta %}{{object.meta_description}}{% endblock meta%}
 
@@ -9,13 +11,11 @@
 <script>
 $(document).ready(function() {
    $('#detail_button').click(function(){
-     //alert("clicked detail_button");
      $('#item_feedback').hide();
      $('#item_details').show();
    });
   
    $('#feedback_button').click(function(){
-     //alert("clicked feedback_button");
      $('#item_feedback').show();
      $('#item_details').hide();
 
@@ -33,13 +33,25 @@ li{display:inline-block; margin:2px; padding:5px; background:white;}
 </style>
 {% endblock extra-style %}
 
-{% block content %}						
+{% block content %}
+<div class="grid one-full last">	
+    <p>Categories:
+        {%for category in object.categories.all %}
+            <a href="{{category.get_absolute_url}}">{{category}}</a> 
+        {% endfor %}
+    </p>
+</div>
+
+<div class="clear"></div>
+
 <div class="grid one-half">
     <h3>{{object.name}}</h3>
     <p>{{ object.short_description }}</p>
     <p>
         {% for image in object.itemimage_set.all %}
-            <img src="{{ image.picture.url }}" title="{{ image.picture }}" alt="broken" />
+            {% thumbnail image.picture "150x150" format="PNG" as im %}
+                <img src="{{ im.url }}" title="{{ image.picture }}" alt="broken" />
+            {% endthumbnail %}
         {% endfor %}
     </p>
     <p> Related Items Here...</p>
@@ -60,11 +72,7 @@ li{display:inline-block; margin:2px; padding:5px; background:white;}
         <p>Name: {{object.name}}</p>
         <p>Description: {{object.description}}</p>
         <p>Amount in Stock: {{object.items_in_stock}}</p>
-        <p>Price: Currently no price in set</p>
-        {%for category in object.categories.all %}
-            <a href="{{category.get_absolute_url}}">{{category}}</a>
-        {% endfor %}
-            
+        <p>Price: Currently no price in set</p>            
     </div>
 
 </div>

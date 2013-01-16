@@ -23,11 +23,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=0;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fcontext_processors.py;0;4
+current_page=9
+FILE_NAME_0=733;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fcontext_processors.py;0;4
 FILE_NAME_1=0;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2F__init__.py;0;4
 FILE_NAME_2=0;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fmanagers.py;0;4
-FILE_NAME_3=0;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fsettings.py;0;4
-FILE_NAME_4=0;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fadmin%2Faccounts%2F__init__.py;0;4
-FILE_NAME_5=0;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fadmin%2Ffrontend%2F__init__.py;0;4
-FILE_NAME_6=0;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fadmin%2Ffrontend%2Fbanners.py;0;4
+FILE_NAME_3=347;Python;0;16;1;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fsettings.py;0;4
+FILE_NAME_4=1828;Python;0;16;0;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fmodels%2Fproduct%2Fcategories.py;0;4
+FILE_NAME_5=1335;HTML;0;16;0;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Ftemplates%2Fstorefront%2Fcontact.html;0;4
+FILE_NAME_6=1586;Python;0;16;0;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fviews%2Fcommon%2F__init__.py;0;4
+FILE_NAME_7=218;Python;0;16;0;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Fforms%2F__init__.py;0;4
+FILE_NAME_8=1453;HTML;0;16;0;1;0;%2Fhome%2Fjoost%2Fsources%2Fdjango-storefront%2Fstorefront%2Ftemplates%2Fstorefront%2Fhome.html;0;4
+FILE_NAME_9=2843;Python;0;16;0;1;0;%2Fsrv%2Fhttp%2Fsatchmo2.dev%2Fmvcfiles%2Fsettings.py;0;4

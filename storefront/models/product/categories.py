@@ -6,6 +6,8 @@ from mptt.models import MPTTModel
 from mptt.models import TreeForeignKey
 from mptt.managers import TreeManager
 
+from sorl.thumbnail import ImageField
+
 from storefront.managers import items_published
 
 class Category(MPTTModel):

@@ -47,7 +47,7 @@ class ContactPage( FormView ):
             recipients.append(sender)
 
         send_mail(subject, message, sender, recipients)
-        return super(ContactPage, self).form_valid()
+        return super(ContactPage, self).form_valid(self)
 
             
 

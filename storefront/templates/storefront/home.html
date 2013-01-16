@@ -1,5 +1,9 @@
 {% extends "storefront/base_generic.html" %}
 
+{% load thumbnail %}
+
+{% block title %} Home {% endblock %}
+
 {% block javascripts %}
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -47,12 +51,14 @@ $(document).ready(function () {
 
 {% block content %}						
 <div class="grid one-fifth">
-	<h3>Categories</h3>
+	<h3>Root Categories</h3>
 	<p>
 		{% for category in category_list %}
-		<a href="{{ category.get_absolute_url }}" title="{{ category.name }}" target="_self">
-			{{ category.name }}
-		</a><br />
+        {% if category.is_root_node %}
+            <a href="{{ category.get_absolute_url }}" title="{{ category.name }}" target="_self">
+                {{ category.name }}
+            </a><br />
+        {% endif %}
 		{% endfor %}
 		
 	</p>
@@ -83,9 +89,11 @@ $(document).ready(function () {
             </a>
         </h3>
         
-        {% for image in featured.itemimage_set.all %}
-            <img src="{{ image.picture.url }}" title="{{ image }}" alt="broken" /><br />
-        {% endfor %}
+        {% with featured.itemimage_set.all|first as image %}
+            {% thumbnail image.picture "175x100" crop="center" format="PNG" as im %}
+                <img src="{{ im.url }}" title="{{ image.picture }}" alt="broken" />
+            {% endthumbnail %}
+        {% endwith %}
         
         <p>
         {{ featured.short_description }}
@@ -97,15 +105,15 @@ $(document).ready(function () {
 
 <hr />
 
-<div class="this-is-not-a-class">
+<div class="grid one-full last">
 	<h3>Locations</h3>
 	<p>
+		Links to distributers brick and mortar.<br />
 		Links to distributers brick and mortar.
-		Links to distributers brick and mortar.
-		<br>
 	</p>
-</div><div class="clear"></div>
+</div>
 
+<div class="clear"></div>
 <div class="hr"></div>
 							
 {% endblock content%}

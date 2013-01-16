@@ -8,4 +8,4 @@ urlpatterns = patterns(
     url(r'^tags/', include('storefront.urls.tags')),
     url(r'^categories/', include('storefront.urls.product.categories')),
     url(r'^', include('storefront.urls.product.items')),
-    )   
+    )
