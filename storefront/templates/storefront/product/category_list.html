@@ -1,48 +1,40 @@
 {% extends "storefront/base_generic.html" %}
 
-{% load mptt_tags %}
-{% load thumbnail %}
-
 {% block title %}Categories{% endblock %}
 
 {% block content %}
     
-    {% recursetree object_list %}
-        {% if node.is_root_node %}
+    {% for category in object_list %}
+        {% if category.parent__isnull %}
             <div class="grid one-full last">
         {% else %}
             <div class="grid one-third {% cycle '' '' 'last' %} ">
         {% endif %}
         
-            {% if node.is_root_node %}
+            {% if category.parent__isnull %}
                 <h3 class="one-full">
-                    <a href="{{ node.get_absolute_url }}" title="Show all entries in {{ node }}"> {{node}} </a>
+                    <a href="{{ category.get_absolute_url }}" title="Show all entries in {{ category }}"> {{category}} </a>
                 </h3>
             {% else %}
                 <h5 class="one-full">
-                    <a href="{{ node.get_absolute_url }}" title="Show all entries in {{ node }}"> {{node}} </a>
+                    <a href="{{ category.get_absolute_url }}" title="Show all entries in {{ category }}"> {{category}} </a>
                 </h5>   
-           
-                {% thumbnail node.image "x75" format="PNG" as im %}
-                    <img class="grid one-fourth" src="{{ im.url }}" title="{{ node }}" alt="broken" />
-                {% endthumbnail %}
          
-                {% if node.description %}
-                    <span class="grid three-fourth last">{{ node.description|striptags|safe }}</span>
+                {% if category.description %}
+                    <span class="grid three-fourth last">{{ category.description }}</span>
                 {% endif %}
             {% endif %}
             
-            <!--Recursion here -->        
-            {% if not node.is_leaf_node %} {{ children }} {% endif %}
+
                 
-        {% if node.is_root_node %}
+        {% if category.parent__isnull %}
             </div>
             <div class="clear"></div>
             <div class="hr"></div>
         {% else %}
             </div>
         {% endif %}
-    {% endrecursetree %}
+    {% endfor %}
     
     {% if not object_list %}
         <div class="grid last">

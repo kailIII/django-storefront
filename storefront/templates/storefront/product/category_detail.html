@@ -1,8 +1,5 @@
 {% extends "storefront/base_generic.html" %}
 
-{% load mptt_tags %}
-{% load thumbnail %}
-
 {% block title %}{{ object.name }}{% endblock %}
 
 {% block javascripts %}
@@ -56,10 +53,10 @@ $(document).ready(function () {
 {% block content %}
 
     <div class="grid one-full last">
-        <p>Return to: <a href="{% url storefront_category_list %}">Category List</a></p>
+        <p>Return to: <a href="#">Category List</a></p>
         <p>Subcategories go here:</p>
-        {%for child in object.get_children %}
-            <a href="{{ child.get_absolute_url }}" title="{{ child.name }}" target="_self">{{ child.name }}</a>
+        {%for subcategory in object.category_set.all %}
+            <a href="{{ subcategory.get_absolute_url }}" title="{{ subcategory.name }}" target="_self">{{ subcategory.name }}</a>
         {% endfor %}
     </div>
     
@@ -72,16 +69,14 @@ $(document).ready(function () {
     </div>
     
     <div class="grid one-half last">
-        {% thumbnail object.image "150x150" format="PNG" as im %}
-            <img src="{{ im.url }}" title="{{ node.name }}" alt="broken" />
-        {% endthumbnail %}
+            <img src="{{ object.image }}" title="{{ object.name }}" alt="broken" />
     </div>
 
     
     <div class="clear"></div>
     <hr />
 
-    {% for item in object.items_published %}
+    {% for item in object.item_set.all %}
         <div class="grid one-fifth {% cycle 'foo' 'foo' 'bar' 'bar' 'last' %}">
             <h3><a href="{{ item.get_absolute_url }}" title="{{ item.name }}" target="_self">
                 {{ item.name }}
@@ -89,9 +84,7 @@ $(document).ready(function () {
             
             <div class="picture_container">
             {% for image in item.itemimage_set.all %}
-                {% thumbnail image.picture "x100" format="PNG" as im %}
-                    <img class="slide{{item.ordering}}" src="{{ im.url }}" height="{{ im.y }}" title="{{ image.picture }}" alt="broken" />
-                {% endthumbnail %}
+                    <img class="slide{{item.ordering}}" src="{{ image }}" title="{{ image.picture }}" alt="broken" />
             {% endfor %}
             </div>
         </div>

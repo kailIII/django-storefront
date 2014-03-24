@@ -1,7 +1,4 @@
 {% extends "storefront/base_generic.html" %}
-{% load comments %}
-{% load mptt_tags %}
-{% load thumbnail %}
 
 {% block meta %}{{object.meta_description}}{% endblock meta%}
 
@@ -50,9 +47,7 @@ li{display:inline-block; margin:2px; padding:5px; background:white;}
     <p>{{ object.short_description }}</p>
     <p>
         {% for image in object.itemimage_set.all %}
-            {% thumbnail image.picture "150x150" format="PNG" as im %}
-                <img src="{{ im.url }}" title="{{ image.picture }}" alt="broken" />
-            {% endthumbnail %}
+                <img src="{{ image }}" title="{{ image.picture }}" alt="broken" />
         {% endfor %}
     </p>
     <p> Related Items Here...</p>
@@ -65,8 +60,7 @@ li{display:inline-block; margin:2px; padding:5px; background:white;}
     </ul>
     <hr />
     <div id="item_feedback">
-        {% render_comment_list for object %}
-        {% render_comment_form for object %}
+    <p> hello </p>
     </div>
     
     <div id="item_details">

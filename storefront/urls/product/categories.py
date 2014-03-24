@@ -12,7 +12,7 @@ urlpatterns = patterns(
 			CategoryList.as_view(),
 			name='storefront_category_list'),
 	
-    url(r'^(?P<parent_slugs>([-\w]+/)*)?(?P<slug>[-\w]+)/$',
+    url(r'^(?P<slug>[-\w]+)/$',
 			CategoryDetail.as_view(),
-			name='storefront_category_detail'),
+			name='category_detail'),
 )
