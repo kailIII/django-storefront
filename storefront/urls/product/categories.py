@@ -7,7 +7,6 @@ from storefront.views.product.categories import CategoryDetail
 
 urlpatterns = patterns(
     '',
-    
     url(r'^$',
 			CategoryList.as_view(),
 			name='storefront_category_list'),

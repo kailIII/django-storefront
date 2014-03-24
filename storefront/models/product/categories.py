@@ -7,11 +7,16 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
     description = models.TextField(blank=True)
-    parent = models.ForeignKey('self', null=True, blank=True, verbose_name='parent category', related_name='children')
-    meta_description = models.TextField(max_length=255, blank=True, null=True,  )
+    meta_description = models.TextField(max_length=255, blank=True, null=True)
+    image = models.ImageField(upload_to="images/", blank=True, null=True)
     is_active = models.BooleanField(default=True, blank=True)
     related = models.ManyToManyField('self', blank=True, null=True)
-    image = models.ImageField(upload_to="images/", blank=True, null=True)
+    parent = models.ForeignKey(
+        'self',
+        null=True,
+        blank=True,
+        verbose_name='parent category',
+        related_name='children', )
 
     class Meta:
         app_label = 'storefront'
